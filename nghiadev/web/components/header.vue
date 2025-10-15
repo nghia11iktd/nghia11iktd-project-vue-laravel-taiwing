@@ -1,5 +1,10 @@
 <script setup>
+import { ref } from 'vue'
 import Search from './icon/Search.vue'
+import ShowLogin from './icon/showLogin.vue'
+import ShowRegister from './icon/showRegister.vue'
+const Login = ref(false)
+const Register = ref(false)
 </script>
 
 <template>
@@ -27,11 +32,13 @@ import Search from './icon/Search.vue'
     <!-- header-right -->
     <div class="flex right-6">
       <button
+      @click="Register=true"
         class="h-[50px] w-[70px] font-bold bg-transparent transition-all duration-500 ease-in-out pointer-events-auto text-sm hover:scale-110 hover:-translate-y-[5px] hover:border-b hover:border-[#013f6e] cursor-pointer"
       >
         Đăng kí
       </button>
       <button
+      @click="Login = true"
         class="h-[50px] w-[80px] font-bold rounded-[18px] bg-[#1797f9] text-white ml-[15px] transition-all duration-500 ease-in-out pointer-events-auto flex items-center justify-center text-sm hover:scale-110 hover:-translate-y-[5px] hover:border-b hover:border-[#013f6e] cursor-pointer"
       >
         Đăng nhập
@@ -81,9 +88,10 @@ import Search from './icon/Search.vue'
            hover:bg-[#686666] hover:text-white
            hover:rounded-[25px]">
         <button><ion-icon name="volume-high-outline"></ion-icon></button>
-
      </div>
     </div>
-
   </div>
+  <!-- show login -->
+  <show-login v-if="Login" @close="Login = false" />
+  <show-register v-if="Register" @close="Register = false" />
 </template>
